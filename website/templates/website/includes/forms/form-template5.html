@@ -1,0 +1,62 @@
+<div class="sidebar sidebar-content" data-sidebar-id="form-template5">
+    <div class="container">
+        <div class="popup-content">
+            <div class="close">
+                <img src="/static/img/close-white.svg" alt="">
+            </div>
+            <p class="popup-title">
+                Вы хотите заказать "CRM" или "ERP" систему ?
+            </p>
+            <form action="mail.php?type=contact_me" method="post" class="form">
+                <input type="hidden" name="from">
+                <div class="form-content clear">
+                    <div class="col-md-12">
+                        <p class="form-text">Давайте, обсудим все функционал вашего проекта, уточним все важные для работы вопросы и тогда мы
+                            будем готовы предоставить вам полную смету, по работам на вашим проектом. Укажите ваши
+                            контактны
+                            и менеджер свяжется с вами уже сегодня!</p>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Ваше имя" class="form-input" name="name" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="+7(__) __-____" class="form-input" name="phone" required>
+                    </div>
+					<div class="col-md-12">
+                        <input type="text" placeholder="E-mail" class="form-input" name="email" required>
+                    </div>
+                    <!-- selectof data-range-id-in containerna vori mej piti lini input inch vor-->
+                    <div class="col-md-12">
+                        <select name="site_type" class="form-input with-range" data-range-id="range5" required>>
+                            <option selected disabled>Выберите систему</option>
+                            <option value="CRM" data-min="300000" data-max="20000000">CRM</option>
+                            <option value="ERP" data-min="300000" data-max="20000000">ERP</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-12 hidden" id="range5">
+                        <label>Выберите цену: от <span class="min-value">0</span> руб. до <span
+                                class="max-value">0</span> руб.</label>
+                        <input type="hidden" class="min" name="price[min]">
+                        <input type="hidden" class="max" name="price[max]">
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-submit form-btn" type="submit">Отправить</button>
+                    </div>
+                </div>
+
+                <!-- aranc select -->
+                <!-- <div class="form-content">
+                    <div class="col-md-4 form-range" data-min="2000" data-max="4000">
+                        <p class="form-input">
+                            от <span class="min-value">0</span> до <span class="max-value">0</span>
+                        </p>
+                        <input type="hidden" class="min" name="price[min]">
+                        <input type="hidden" class="max" name="price[max]">
+                    </div>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+</div>

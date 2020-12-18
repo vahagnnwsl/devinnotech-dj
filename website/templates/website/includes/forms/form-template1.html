@@ -1,0 +1,65 @@
+<div class="sidebar sidebar-content" data-sidebar-id="form-template1">
+    <div class="container">
+        <div class="popup-content">
+            <div class="close">
+                <img src="/static/img/close-white.svg" alt="">
+            </div>
+            <p class="popup-title">
+                Оставить заявку
+            </p>
+            <form action="mail.php?type=contact_me" method="post" class="form">
+                <input type="hidden" name="from">
+                <div class="form-content clear">
+                    <div class="col-md-12">
+                       <p class="form-title col-md-12">
+                        Вы в одном шаге до старта вашего проекта!
+                    </p>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Ваше имя" minlength="2" class="form-input" name="name" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="+7(__) __-____" class="form-input" name="phone" required>
+                    </div>
+					 <div class="col-md-12">
+                        <input type="text" placeholder="E-mail" class="form-input" name="email" required>
+                    </div>
+                    <!-- selectof data-range-id-in containerna vori mej piti lini input inch vor-->
+                    <div class="col-md-12">
+                        <select name="site_type" class="form-input with-range" data-range-id="range1" required>
+                            <option selected disabled>Выберите тип сайта</option>
+                           								<option value="интернет магазин" data-min="200000" data-max="1000000">Интернет магазин
+                            </option>
+                            <option value="Корпоративный сайт" data-min="220000" data-max="1000000">Корпоративный сайт
+                            </option>
+                            <option value="CRM и ERP" data-min="300000" data-max="20000000">CRM и ERP</option>
+                            <option value="СТАРТАП" data-min="1000000" data-max="60000000">Стартап</option>
+                            <option value="ДРУГОЕ" data-min="150000" data-max="60000000">Другое</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 hidden" id="range1">
+                        <label>Выберите цену: от <span class="min-value">0</span> руб. до <span
+                                class="max-value">0</span> руб.</label>
+                        <input type="hidden" class="min" name="price[min]">
+                        <input type="hidden" class="max" name="price[max]">
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-submit form-btn g-recaptcha" type="submit"  data-sitekey="your_site_key" data-callback='onSubmit'>Отправить</button>
+                    </div>
+                </div>
+
+                <!-- aranc select -->
+                <!-- <div class="form-content">
+                    <div class="col-md-4 form-range" data-min="2000" data-max="4000">
+                        <p class="form-input">
+                            от <span class="min-value">0</span> до <span class="max-value">0</span>
+                        </p>
+                        <input type="hidden" class="min" name="price[min]">
+                        <input type="hidden" class="max" name="price[max]">
+                    </div>
+                </div> -->
+
+            </form>
+        </div>
+    </div>
+</div>
