@@ -1,0 +1,8 @@
+__pycache__
+MANIFEST
+dist/
+node_modules/
+build/
+env/
+.env
+db.sqlite3
