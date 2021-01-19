@@ -1,0 +1,19 @@
+{
+  "siteType": {
+    "shop": {
+      "title": "Интернет магазин"
+    },
+    "corporate": {
+      "title": "Корпоративный сайт"
+    },
+    "crm": {
+      "title": "CRM и ERP"
+    },
+    "startup": {
+      "title": "Стартап"
+    },
+    "other": {
+      "title": "Другое"
+    }
+  }
+}

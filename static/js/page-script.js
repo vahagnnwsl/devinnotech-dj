@@ -134,25 +134,27 @@ $(window).load(function () {
     function getFormRules(e) {
         var i = 0;
         var rules = {};
-        while((el = e[i])) {
+        while ((el = e[i])) {
             rules[el.name] = {};
-            rules[el.name].required = !!el.required ;
-            rules[el.name].minLength = el.minlength == -1? false : el.minlength;
+            rules[el.name].required = !!el.required;
+            rules[el.name].minLength = el.minlength == -1 ? false : el.minlength;
             i++;
         }
         return rules;
     }
-    $.each($('form'), function(i,e) {
+
+    $.each($('form'), function (i, e) {
         var rules = getFormRules(e);
-        $(this).validate({rules:rules});
+        $(this).validate({rules: rules});
     });
     $('form').on('submit', function (e) {
         e.preventDefault();
-        if($(this).find('.error').length > 0) return;
+
+        if ($(this).find('.error').length > 0) return;
         showLoader();
         $.ajax({
             type: $(this).attr('method'),
-            url: $(this).attr('action'),
+            url: $(this)[0].hasAttribute('action') ? $(this).attr('action') : window.location.origin,
             data: $(this).serialize()
         }).done(function () {
             stopLoader();
@@ -166,8 +168,8 @@ $(window).load(function () {
         $(this).closest('.sidebar').find('.close').trigger('click')
     });
 
-    function showPopup (id) {
-            var element = $('.popup[data-popup-id="' + id + '"]');
+    function showPopup(id) {
+        var element = $('.popup[data-popup-id="' + id + '"]');
 
         if (element.length > 0) {
             $(element).addClass("visible");
@@ -185,7 +187,6 @@ $(window).load(function () {
         window.allowSlide = 0;
         window.popupShown = 0;
     }
-
 
 
     $('.message button').on('click', function () {

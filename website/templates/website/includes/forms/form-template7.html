@@ -7,8 +7,8 @@
             <p class="popup-title">
                 Вы хотите заказать проект?
             </p>
-            <form action="mail.php?type=contact_me" method="post" class="form">
-                <input type="hidden" name="from">
+            <form  method="post" class="form"  action="/order/">
+                    {% csrf_token %}
                 <div class="form-content clear">
                     <div class="col-md-12">
                         <p class="form-text">Давайте, обсудим все функции вашего проекта, уточним все важные для работы вопросы и тогда мы
@@ -16,43 +16,27 @@
                             контактны
                             и менеджер свяжется с вами уже сегодня!</p>
                     </div>
-                    <div class="col-md-12">
-                        <input type="text" placeholder="Ваше имя" class="form-input" name="name" required>
-                    </div>
-                    <div class="col-md-12">
-                        <input type="text" placeholder="+7(__) __-____" class="form-input" name="phone" required>
-                    </div>
-					<div class="col-md-12">
-                        <input type="text" placeholder="E-mail" class="form-input" name="email" required>
-                    </div>
-                    <!-- selectof data-range-id-in containerna vori mej piti lini input inch vor-->
-                    <div class="col-md-12">
-                        <select name="site_type" class="form-input with-range" data-range-id="range7">
 
-                            <option value="ДРУГОЕ" data-min="150000" data-max="60000000">Проект</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 hidden" id="range7">
-                        <label>Выберите цену: от <span class="min-value">0</span> руб. до <span
-                                class="max-value">0</span> руб.</label>
-                        <input type="hidden" class="min" name="price[min]">
-                        <input type="hidden" class="max" name="price[max]">
-                    </div>
+                     {% for field in form %}
+                        {% if field.name == 'site_type' %}
+                            <select  class="form-input" name="{{field.name}}">
+                                {% for key,val in field.field.choices %}
+                                    <option value="{{ key }}" {% if key == 'other' %}
+                                            selected {% endif %}>{{ val }}</option>
+                                {% endfor %}
+                            </select>
+
+                        {% else %}
+                            <div class="col-md-12">
+                                {{ field }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                     <div class="col-md-12">
                         <button class="btn btn-submit form-btn g-recaptcha" type="submit"  data-sitekey="your_site_key" data-callback='onSubmit'>Отправить</button>
                     </div>
                 </div>
 
-                <!-- aranc select -->
-                <!-- <div class="form-content">
-                    <div class="col-md-4 form-range" data-min="2000" data-max="4000">
-                        <p class="form-input">
-                            от <span class="min-value">0</span> до <span class="max-value">0</span>
-                        </p>
-                        <input type="hidden" class="min" name="price[min]">
-                        <input type="hidden" class="max" name="price[max]">
-                    </div>
-                </div> -->
 
             </form>
         </div>

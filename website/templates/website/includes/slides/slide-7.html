@@ -1,53 +1,46 @@
-<section class="slide fade kenBurns slide-7  active"  id="application-menu" data-title="Обратная связь">
+<section class="slide fade kenBurns slide-7  active" id="application-menu" data-title="Обратная связь">
     <div class="content">
         <div class="container">
             <div class="wrap-box">
                 <div class="left-contact  ae-1 fromLeft">
-                    <form class="contact-form">
+                    <form class="contact-form" method="post" action="/contact/">
+                        {% csrf_token %}
                         <h2>Свяжись с нами</h2>
+
                         <p>Напиши нам, и мы, возможно,<br/> ответим на самый сложный вопрос.</p>
+
+                        {% for field in contactForm %}
+                            <div class="str">
+                                <label for="{{ field.name }}">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+
                         <div class="str">
-                            <label for="name">Имя</label>
-                            <input type="text" id="name" minlength="2" required>
+                            <input type="submit" class="g-recaptcha" value="Оставить заявку"
+                                   data-sitekey="your_site_key" data-callback='onSubmit'>
                         </div>
-                        <div class="str">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="str">
-                            <label for="question">Вопрос</label>
-                            <textarea id="question"></textarea>
-                        </div>
-                        <div class="str">
-                            <input type="submit" class="g-recaptcha" value="Оставить заявку" data-sitekey="your_site_key" data-callback='onSubmit'>
-                        </div>
+
                     </form>
-                   <!--  <form class="subscribe">
-                        <span>Подписаться на Девиннотек</span>
-                        <input type="submit" value="я в теме">
-                    </form> -->
+
                 </div>
                 <div class="right-contact  ae-1 fromRight">
                     <h1>Также можете связаться с нами</h1>
-                   <!--  <h2>Контактируй</h2> -->
                     <ul class="list-of-feed">
                         <li class="e-mail">hello@devinnotech.com</li>
                         <li class="phone">8 958 401 85 64</li>
                     </ul>
-                    <!-- <h2>Стань ближе</h2>
-                    <ul class="network">
-                        <li class="vk"><a href="" title=""></a></li>
-                        <li class="youtube"><a href="" title=""></a></li>
-                        <li class="fb"><a href="" title=""></a></li>
-                        <li class="instagram"><a href="" title=""></a></li>
-                    </ul> -->
+
                 </div>
             </div>
             <div class="bottom-slide-7 ae-2 fromBottom">
-                <p class="copy">© 2019-2020.Девиннотек ИНН 07745687<br/><span>Все права защищены.</span></p>
+
+                <p class="copy">© 2019-<span id="copyright"></span>.Девиннотек ИНН 07745687<br/><span>Все права защищены.</span>
+                </p>
                 <div class="gerb-7">
                     <img src="/static/img/main/slide-1/logo.png" alt=""/>
                 </div>
+                <script>document.getElementById('copyright').innerText = new Date().getFullYear()</script>
             </div>
             <div class="bg-7-2 ae-4 fromLeft"></div>
         </div>
