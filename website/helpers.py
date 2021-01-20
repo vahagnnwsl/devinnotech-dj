@@ -16,11 +16,19 @@ def get_site_types_for_form_select():
     return site_type
 
 
+def get_ip(request):
+    if 'HTTP_X_FORWARDED_FOR' in request.META:
+        return request.META['HTTP_X_FORWARDED_FOR'].split(',')[0].strip()
+    else:
+        return request.META.get('REMOTE_ADDR'),
+
+
 def create_response(form, request, view_path):
     if form.is_valid():
 
+        print(request.META)
         data = dict(
-            ip=request.META.get('REMOTE_ADDR'),
+            ip=get_ip(request),
             date=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         )
 
