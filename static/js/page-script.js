@@ -147,6 +147,7 @@ $(window).load(function () {
         var rules = getFormRules(e);
         $(this).validate({rules: rules});
     });
+
     $('form').on('submit', function (e) {
         e.preventDefault();
 
@@ -154,7 +155,7 @@ $(window).load(function () {
         showLoader();
         $.ajax({
             type: $(this).attr('method'),
-            url: $(this)[0].hasAttribute('action') ? $(this).attr('action') : window.location.origin,
+            url: $(this).attr('action'),
             data: $(this).serialize()
         }).done(function () {
             stopLoader();
